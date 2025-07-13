@@ -28,6 +28,22 @@ public class CustomerService {
         return repository.save(customer);
     }
 
+    /**
+     * Evaluates access control rules for a given persona, function, and targetPersona.
+     * This method loads rules defined via configuration, parses conditions written in
+     * Spring Expression Language (SpEL), and evaluates them using the provided context.
+     * Workflow:
+     * 1. Finds the rule for the input persona.
+     * 2. Chooses specialRule if available; otherwise, falls back to existingRule.
+     * 3. Compares the given function name to the rule's function.
+     * 4. If there are SpEL conditions, evaluates them one by one using the context.
+     * 5. If any condition is true, returns the associated action.
+     *
+     * @param persona        The identity attempting to access
+     * @param functionName   The name of the function (e.g., USER_MANAGEMENT)
+     * @param targetPersona  The target of the action being accessed
+     * @return Optional containing the action (e.g., READ_WRITE) if access is granted
+     */
     public Optional<String> getSpecialAccessAction(String persona, String functionName, String targetPersona) {
         Optional<AccessConfig.PersonaRuleWrapper> personaRuleOpt = config.getPersonaAccess().stream()
                 .filter(p -> p.getPersona().equals(persona))
