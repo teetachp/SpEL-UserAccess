@@ -2,17 +2,17 @@ access-config:
   personaAccess:
     - persona: PERSONA1
       existingRule:
-        functionName: "USER_MANAGEMENT"
-        scope: "Global"
-        action: "READ_WRITE"
+        - functionName: "USER_MANAGEMENT"
+          scope: "Global"
+          action: "READ_WRITE"
       specialRule:
-        functionName: "USER_MANAGEMENT"
-        action: "READ_WRITE"
-        conditions:
-          - "#targetPersona == 'PERSONA2'"
-          - "#targetPersona == 'PERSONA3'"
+        - functionName: "USER_MANAGEMENT"
+          action: "READ_WRITE"
+          conditions:
+            - "#targetPersona == 'PERSONA2'"
+            - "#targetPersona == 'PERSONA3'"
     - persona: PERSONA2
       existingRule:
-        functionName: "USER_MANAGEMENT"
-        scope: "Global"
-        action: "READ_WRITE"
+        - functionName: "USER_MANAGEMENT"
+          scope: "Global"
+          action: "READ_WRITE"

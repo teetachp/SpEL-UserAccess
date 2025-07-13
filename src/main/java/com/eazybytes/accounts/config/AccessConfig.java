@@ -19,24 +19,24 @@ public class AccessConfig {
 
     public static class PersonaRuleWrapper {
         private String persona;
-        private Rule existingRule;
-        private Rule specialRule;
+        private List<Rule> existingRule;
+        private List<Rule> specialRule;
 
         public String getPersona() { return persona; }
         public void setPersona(String persona) { this.persona = persona; }
 
-        public Rule getExistingRule() { return existingRule; }
-        public void setExistingRule(Rule existingRule) { this.existingRule = existingRule; }
+        public List<Rule> getExistingRule() { return existingRule; }
+        public void setExistingRule(List<Rule> existingRule) { this.existingRule = existingRule; }
 
-        public Rule getSpecialRule() { return specialRule; }
-        public void setSpecialRule(Rule specialRule) { this.specialRule = specialRule; }
+        public List<Rule> getSpecialRule() { return specialRule; }
+        public void setSpecialRule(List<Rule> specialRule) { this.specialRule = specialRule; }
     }
 
     public static class Rule {
         private String functionName;
         private String scope;
         private String action;
-        private List<String> conditions; // Changed to list
+        private List<String> conditions;
 
         public String getFunctionName() { return functionName; }
         public void setFunctionName(String functionName) { this.functionName = functionName; }

@@ -31,7 +31,7 @@ public class CustomerController {
     public ResponseEntity<Map<String, Object>> checkAccess(@RequestParam String persona,
                                               @RequestParam String function,
                                               @RequestParam String targetPersona) {
-        Optional<String> actionOpt = service.getSpecialAccessAction(persona, function, targetPersona);
+        Optional<String> actionOpt = service.getAccessAction(persona, function, targetPersona);
         Map<String, Object> response = new HashMap<>();
         response.put("persona", persona);
         response.put("function", function);
